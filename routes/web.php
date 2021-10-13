@@ -5,6 +5,7 @@ use App\Http\Middleware\Authenticate;
 use Livewire\Component;
 use App\Http\Livewire\LiveWatch;
 use App\Http\Livewire\MediaUploadComponent;
+use App\Http\Livewire\DiseasesComponent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,8 +28,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware([Authenticate::class])->group(function(){
  
     // Frontend guest routes
+    Route::get('/diseases', DiseasesComponent::class);
     Route::get('/live-trending-watch', LiveWatch::class);
     Route::get('/live-watch', LiveWatch::class); 
     Route::get('/super-admin', MediaUploadComponent::class); 
  
- });
+});

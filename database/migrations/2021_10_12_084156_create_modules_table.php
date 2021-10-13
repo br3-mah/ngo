@@ -14,7 +14,14 @@ class CreateModulesTable extends Migration
     public function up()
     {
         Schema::create('modules', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->foreignId('disease_id')->nullable()->index();
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->string('slug')->nullable();
+            $table->integer('status_id')->default(1);
+            $table->foreignId('team_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

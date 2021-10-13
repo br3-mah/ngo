@@ -14,7 +14,14 @@ class CreateDiseasesTable extends Migration
     public function up()
     {
         Schema::create('diseases', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('action_taken')->nullable();
+            $table->integer('status_id')->default(1);
+            $table->foreignId('team_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
