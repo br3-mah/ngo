@@ -11,10 +11,10 @@ class ModulesComponent extends Component
     public $model;
     public $isPopped;
     public $results;
-    public $disease_name, $description;
+    public $module_name, $description, $disease_id;
 
     protected $rules = [
-        'disease_name' => 'required',
+        'module_name' => 'required',
         'description' => 'required'
     ];
 
@@ -27,7 +27,7 @@ class ModulesComponent extends Component
 
     public function initializeFields()
     {
-        $this->disease_name = ''; 
+        $this->module_name = ''; 
         $this->description = '';   
     }
 
@@ -56,9 +56,10 @@ class ModulesComponent extends Component
             // $validatedData = $this->validate();
             // dd($validatedData);
             $data = Module::UpdateOrCreate([
-                'name' => $this->disease_name,
+                'name' => $this->module_name,
                 'description' => $this->description,
-                'slug' => $this->disease_name,
+                'slug' => $this->module_name,
+                'disease_id' => $this->disease_id,
                 'user_id' => auth()->user()->id,
                 'team_id' => auth()->user()->current_team_id
             ]);    
@@ -71,7 +72,7 @@ class ModulesComponent extends Component
     public function edit($id, Module $module)
     {
         $data = $module->find($id);
-        $this->disease_name = $data->name;
+        $this->module_name = $data->name;
         $this->description = $data->description;
         $this->toggleModal();
     }
