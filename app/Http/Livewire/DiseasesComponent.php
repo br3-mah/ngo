@@ -4,25 +4,33 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Models\Disease;
 
 class DiseasesComponent extends Component
 {
     use WithFileUploads;
 
+    public $model;
     public $isPopped;
-    public $caption_title, $sub_headline, $media_type, $background_desc, $media_file;
+    public $results;
+    public $disease_name, $description;
+
     protected $rules = [
-        // 'cover_image' => 'required',
-        'caption_title' => 'required',
-        'sub_headline' => 'required',
-        'media_type' => 'required',
-        'background_desc' => 'required',
-        'media_file' => 'required',
+        'disease_name' => 'required',
+        'description' => 'required'
     ];
 
-    public function mount()
+    public function mount(Disease $disease)
     {
+        $this->model = $disease;
+        $this->results = $disease->with('team')->get();
         $this->isPopped = false;
+    }
+
+    public function initializeFields()
+    {
+        $this->disease_name = ''; 
+        $this->description = '';   
     }
 
     public function render()
@@ -30,8 +38,49 @@ class DiseasesComponent extends Component
         return view('livewire.diseases-component');
     }
 
+    public function dehydrated()
+    {
+        $this->mount($this->model);
+    }
+
     public function toggleModal()
     {
         $this->isPopped = !$this->isPopped;
+        if($this->isPopped == false)
+        {
+            $this->initializeFields();
+        }
+    }
+
+    public function store()
+    {
+        try {
+            // $validatedData = $this->validate();
+            // dd($validatedData);
+            $data = Disease::UpdateOrCreate([
+                'name' => $this->disease_name,
+                'description' => $this->description,
+                'slug' => $this->disease_name,
+                'user_id' => auth()->user()->id,
+                'team_id' => auth()->user()->current_team_id
+            ]);    
+            $this->toggleModal();
+        } catch (Exception $e) {
+            dd($e);
+        }
+    }
+
+    public function edit($id, Disease $disease)
+    {
+        $data = $disease->find($id);
+        $this->disease_name = $data->name;
+        $this->description = $data->description;
+        $this->toggleModal();
+    }
+
+    public function destroy($id, Disease $disease)
+    {
+        $disease->find($id)->delete();
+        session()->flash('message', 'Deleted Successfully.');
     }
 }

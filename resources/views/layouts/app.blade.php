@@ -53,10 +53,10 @@
                         <li><a class="is-active">Dashboard</a></li>
                         <li><a>Organizations</a></li>
                         <li><a href="/diseases">Diseases</a></li>
-                        <li><a>Modules</a></li>
-                        <li><a>Intervensions</a></li>
-                        <li><a>Reports</a></li>
-                        <li><a>Users</a></li>
+                        <li><a href="/modules">Modules</a></li>
+                        <li><a href="/intervensions">Intervensions</a></li>
+                        <li><a href="/reports">Reports</a></li>
+                        <li><a href="/Users">Users</a></li>
                     </ul>
 <!--                     <p class="menu-label">
                         Administration
