@@ -15,20 +15,20 @@
         <div class="p-2 mt-2 card">
             <table class="table table-responsive">
                 <thead class="header">
-                    <th><small>Name of Disease</small></th>
+                    <th><small>Module Name</small></th>
                     <th><small>Description</small></th>
-                    <th><small>Group/Organization</small></th>
+                    <th><small>Disease</small></th>
                     <th><small>Modifed</small></th>
                     <th><small>Added on</small></th>
                 </thead>
                 <tbody>
-                    @forelse($results as $disease)
+                    @forelse($results as $module)
                     <tr>
-                        <td>{{ $disease->name }}</td>
-                        <td>{{ $disease->description }}</td>
+                        <td>{{ $module->name }}</td>
+                        <td>{{ $module->description }}</td>
                         <td>{{ "ATS" }}</td>
-                        <td>{{ $disease->updated_at }}</td>
-                        <td>{{ $disease->created_at }}</td>
+                        <td>{{ $module->updated_at }}</td>
+                        <td>{{ $module->created_at }}</td>
                         <td><button wire:click="destroy({{$disease->id}})" class="has-background-danger has-text-white rounded-full is-clickable px-3 py-1">X</button></td>
                         <td><button wire:click="edit({{$disease->id}})" class="has-background-success has-text-white rounded-full is-clickable px-3 py-1">Edit</button></td>
                     </tr>
@@ -50,6 +50,6 @@
         </div>
     </div>
     @if($isPopped)
-        @include('modals.create._add_disease')
+        @include('modals.create._add_module')
     @endif
 </div>
