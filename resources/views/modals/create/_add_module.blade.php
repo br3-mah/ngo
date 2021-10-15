@@ -25,7 +25,28 @@
                 </div>
             </div>        
            
-          
+            <div class="field">
+                <label class="small is-primary">Associated Disease</label>
+                <div class="control has-icons-left has-icons-right">
+                    <select class="input is-large" wire:model="disease_id" type="text" placeholder="">
+                        <optgroup>
+                            @forelse($diseases as $d)
+                            <!-- <option value="">-- Select --</option> -->
+                                <option value="{{$d->id}}">{{$d->name}}</option>
+                            @empty
+                                <option>No Diseases Found</option>
+                            @endforelse
+                        </optgroup>
+                    </select>
+                    <span class="icon is-medium is-left">
+                        <i class="fa fa-search"></i>
+                    </span>
+                    <span class="icon is-medium is-right">
+                        <i class="fa fa-check"></i>
+                    </span>
+                </div>
+            </div>  
+
             <div class="field">
                 <label class="small">Module Description</label>
                 <div class="control">
@@ -38,7 +59,7 @@
 
       <footer class="modal-card-foot">
         <button wire:click="store" class="button is-large is-right is-success is-text-sm">Save</button>
-        <button class="button is-right is-large">Cancel</button>
+        <button wire:click.defer="toggleModal" class="button is-right is-large">Cancel</button>
       </footer>
     </div>
 </div>

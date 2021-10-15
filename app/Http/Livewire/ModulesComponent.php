@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Module;
+use App\Models\Disease;
 
 class ModulesComponent extends Component
 {
@@ -11,6 +12,7 @@ class ModulesComponent extends Component
     public $model;
     public $isPopped;
     public $results;
+    public $diseases;
     public $module_name, $description, $disease_id;
 
     protected $rules = [
@@ -20,15 +22,17 @@ class ModulesComponent extends Component
 
     public function mount(Module $module)
     {
+        $this->diseases = Disease::with('team')->get();
         $this->model = $module;
-        $this->results = $module->with('team')->get();
+        $this->results = $module->with('diseases')->with('team')->get();
         $this->isPopped = false;
     }
 
     public function initializeFields()
     {
         $this->module_name = ''; 
-        $this->description = '';   
+        $this->description = '';
+        $this->disease_id = '';   
     }
 
     public function render()
@@ -53,8 +57,6 @@ class ModulesComponent extends Component
     public function store()
     {
         try {
-            // $validatedData = $this->validate();
-            // dd($validatedData);
             $data = Module::UpdateOrCreate([
                 'name' => $this->module_name,
                 'description' => $this->description,

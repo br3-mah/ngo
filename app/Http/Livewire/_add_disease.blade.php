@@ -37,7 +37,7 @@
       </section>
 
       <footer class="modal-card-foot">
-        <button wire:click.defer="toggleModal" wire:click="store" class="button is-large is-right is-success is-text-sm">Save</button>
+        <button wire:click="store" class="button is-large is-right is-success is-text-sm">Save</button>
         <button class="button is-right is-large">Cancel</button>
       </footer>
     </div>

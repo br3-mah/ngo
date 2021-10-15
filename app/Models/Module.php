@@ -22,16 +22,21 @@ class Module extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function team()
     {
-        return $this->belongsTo(Team::class);
+        return $this->belongsTo(Team::class, 'team_id');
     }
 
-    public function disease()
+    public function diseases()
     {
-        return $this->belongsTo(Disease::class);
+        return $this->belongsTo(Disease::class, 'disease_id');
+    }
+
+    public function intervensions()
+    {
+        return $this->hasMany(Intervension::class);
     }
 }

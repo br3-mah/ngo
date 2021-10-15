@@ -29,4 +29,9 @@ class Intervension extends Model
     {
         return $this->belongsTo(Team::class);
     }
+
+    public function modules()
+    {
+        return $this->belongsTo(Module::class, 'module_id');
+    }
 }
