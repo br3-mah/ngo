@@ -6148,7 +6148,8 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
 }
 
 .navbar-item img {
-  max-height: 1.75rem;
+  max-height: auto;
+  width: 60px;
 }
 
 .navbar-item.has-dropdown {
