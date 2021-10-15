@@ -26,11 +26,11 @@
                     <tr>
                         <td>{{ $module->name }}</td>
                         <td>{{ $module->description }}</td>
-                        <td>{{ "ATS" }}</td>
+                        <td class="has-text-black has-background-warning">{{ $module->diseases->name ?? '' }}</td>
                         <td>{{ $module->updated_at }}</td>
                         <td>{{ $module->created_at }}</td>
-                        <td><button wire:click="destroy({{$disease->id}})" class="has-background-danger has-text-white rounded-full is-clickable px-3 py-1">X</button></td>
-                        <td><button wire:click="edit({{$disease->id}})" class="has-background-success has-text-white rounded-full is-clickable px-3 py-1">Edit</button></td>
+                        <td><button wire:click="destroy({{$module->id}})" class="has-background-danger has-text-white rounded-full is-clickable px-3 py-1">X</button></td>
+                        <td><button wire:click="edit({{$module->id}})" class="has-background-success has-text-white rounded-full is-clickable px-3 py-1">Edit</button></td>
                     </tr>
                     @empty
                         <tr>

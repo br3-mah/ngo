@@ -28,5 +28,10 @@ class Disease extends Model
     {
         return $this->belongsTo(Team::class);
     }
+
+    public function module()
+    {
+        return $this->hasMany(Module::class);
+    }
 }
 

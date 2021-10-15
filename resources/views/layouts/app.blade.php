@@ -73,12 +73,12 @@
                     </p>
                     <ul class="menu-list">
                         <li><a class="is-active">Dashboard</a></li>
-                        <li><a>Organizations</a></li>
+                        <li><a href="/organizations">Organizations</a></li>
                         <li><a href="/diseases">Diseases</a></li>
                         <li><a href="/modules">Modules</a></li>
                         <li><a href="/intervensions">Intervensions</a></li>
                         <li><a href="/reports">Reports</a></li>
-                        <li><a href="/Users">Users</a></li>
+                        <li><a href="/contacts">Contacts</a></li>
                     </ul>
 <!--                     <p class="menu-label">
                         Administration
