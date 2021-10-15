@@ -32,10 +32,10 @@
         <link rel="apple-touch-icon" sizes="144x144" src="fav/apple-icon-144x144.png">
         <link rel="apple-touch-icon" sizes="152x152" src="fav/apple-icon-152x152.png">
         <link rel="apple-touch-icon" sizes="180x180" src="fav/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192"  src="fav/android-icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="32x32" src="fav/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="96x96" src="fav/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="16x16" src="fav/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="192x192"  src="/fav/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" src="/fav/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" src="/fav/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" src="/fav/favicon-16x16.png">
         <link rel="manifest" src="fav/manifest.json">
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
@@ -68,8 +68,8 @@
             <nav class="navbar nav-fixed-top is-black is-fixed-top">
                 <div class="navbar-brand">
                     <a class="navbar-item" href="#">
-                     <img src="/logo.png" alt="CSSCM">
-                    <h1 class="title is-1">CSSCM</h1>
+                     <img style="max-height: 50px !important;" src="/logo.png" alt="CSSCM">
+                    <!-- <h1 class="title is-1">CSSCM</h1> -->
                     </a>
                     <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
                         <span></span>
@@ -83,6 +83,19 @@
                     <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="field is-grouped">
+             @if (Route::has('login'))
+                    @auth
+                        <p class="control">
+                            <a class="bd-tw-button button" href="{{ url('/dashboard') }}">
+                            <span class="icon">
+                                <i class="fa fa-id-card-alt"></i>
+                            </span>
+                            <span>
+                                Dashboard
+                            </span>
+                            </a>
+                        </p>
+                    @else
                         <p class="control">
                             <a class="bd-tw-button button" href="/login">
                             <span class="icon">
@@ -93,6 +106,7 @@
                             </span>
                             </a>
                         </p>
+                        @if (Route::has('register'))
                         <p class="control">
                             <a class="button is-primary" href="/register">
                             <span class="icon">
@@ -101,6 +115,9 @@
                             <span>Sign Up</span>
                             </a>
                         </p>
+                        @endif
+                    @endauth
+                    @endif
                         </div>
                     </div>
                     </div>
@@ -115,6 +132,8 @@
             <div class="hero-body">
                 <div class="container has-text-centered">
                     <div class="column is-6 is-offset-3">
+                     <img style="height: 150px !important;" src="/logo.png" alt="CSSCM">
+
                         <h1 class="title">
                             Welcome to the CSSCM registration Portal
                         </h1>
