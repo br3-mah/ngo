@@ -34,4 +34,8 @@ class Intervension extends Model
     {
         return $this->belongsTo(Module::class, 'module_id');
     }
+
+    public static function total_intervensions(){
+        return Intervension::get()->count();
+    }
 }

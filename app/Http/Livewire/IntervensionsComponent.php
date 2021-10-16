@@ -50,10 +50,6 @@ class IntervensionsComponent extends Component
     public function toggleModal()
     {
         $this->isPopped = !$this->isPopped;
-        if($this->isPopped == false)
-        {
-            $this->initializeFields();
-        }
     }
 
     public function store()

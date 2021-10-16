@@ -63,4 +63,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Team::class);
     }
+
+    public static function total_users(){
+        return User::get()->count();
+    }
 }

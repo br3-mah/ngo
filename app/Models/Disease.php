@@ -33,5 +33,9 @@ class Disease extends Model
     {
         return $this->hasMany(Module::class);
     }
+
+    public static function total_diseases(){
+        return Disease::get()->count();
+    }
 }
 

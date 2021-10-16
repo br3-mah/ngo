@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="column is-12">
-
+        <button wire:click="toggleModal" class="is-large is-warning py-5 px-12 button">Generate Report</button>
         <div class="p-2 mt-2 card">
             
         </div>

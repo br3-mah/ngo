@@ -39,4 +39,8 @@ class Module extends Model
     {
         return $this->hasMany(Intervension::class);
     }
+
+    public static function total_modules(){
+        return Module::get()->count();
+    }
 }

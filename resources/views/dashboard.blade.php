@@ -30,25 +30,25 @@
                     <div class="tile is-ancestor has-text-centered">
                         <div class="tile is-parent">
                             <article class="tile is-child box">
-                                <p class="title">439k</p>
+                                <p class="title">{{\App\Models\User::total_users()}}</p>
                                 <p class="subtitle">Users</p>
                             </article>
                         </div>
                         <div class="tile is-parent">
                             <article class="tile is-child box">
-                                <p class="title">59</p>
+                                <p class="title">{{\App\Models\Disease::total_diseases()}}</p>
                                 <p class="subtitle">Diseases</p>
                             </article>
                         </div>
                         <div class="tile is-parent">
                             <article class="tile is-child box">
-                                <p class="title">34</p>
+                                <p class="title">{{\App\Models\Module::total_modules()}}</p>
                                 <p class="subtitle">Modules</p>
                             </article>
                         </div>
                         <div class="tile is-parent">
                             <article class="tile is-child box">
-                                <p class="title">19</p>
+                                <p class="title">{{\App\Models\Intervension::total_intervensions()}}</p>
                                 <p class="subtitle">Intervensions</p>
                             </article>
                         </div>

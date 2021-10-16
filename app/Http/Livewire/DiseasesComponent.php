@@ -46,17 +46,11 @@ class DiseasesComponent extends Component
     public function toggleModal()
     {
         $this->isPopped = !$this->isPopped;
-        if($this->isPopped == false)
-        {
-            $this->initializeFields();
-        }
     }
 
     public function store()
     {
         try {
-            // $validatedData = $this->validate();
-            // dd($validatedData);
             $data = Disease::UpdateOrCreate([
                 'name' => $this->disease_name,
                 'description' => $this->description,
@@ -64,7 +58,9 @@ class DiseasesComponent extends Component
                 'user_id' => auth()->user()->id,
                 'team_id' => auth()->user()->current_team_id
             ]);    
+
             $this->toggleModal();
+            $this->initializeFields();
         } catch (Exception $e) {
             dd($e);
         }

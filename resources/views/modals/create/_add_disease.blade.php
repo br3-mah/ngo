@@ -15,7 +15,7 @@
             <div class="field">
                 <label class="small is-primary">Disease Name</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-large" wire:model="disease_name" type="text" placeholder="">
+                    <input class="input is-large" wire:model.defer="disease_name" type="text" placeholder="">
                     <span class="icon is-medium is-left">
                         <i class="fa fa-search"></i>
                     </span>
@@ -29,7 +29,7 @@
             <div class="field">
                 <label class="small">Description</label>
                 <div class="control">
-                  <textarea wire:model="description" class="textarea" placeholder="A brief description about the disease"></textarea>
+                  <textarea wire:model.defer="description" class="textarea" placeholder="A brief description about the disease"></textarea>
                   
                 </div>
             </div>
