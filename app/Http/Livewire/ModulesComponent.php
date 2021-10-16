@@ -25,6 +25,7 @@ class ModulesComponent extends Component
         $this->diseases = Disease::with('team')->get();
         $this->model = $module;
         $this->results = $module->with('diseases')->with('team')->get();
+        
         $this->isPopped = false;
     }
 
@@ -52,6 +53,7 @@ class ModulesComponent extends Component
 
     public function store()
     {
+        // dd($this->disease_id);
         try {
             $data = Module::UpdateOrCreate([
                 'name' => $this->module_name,

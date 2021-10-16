@@ -22,6 +22,7 @@ class DiseasesComponent extends Component
 
     public function mount(Disease $disease)
     {
+        $this->initializeFields();
         $this->model = $disease;
         $this->results = $disease->with('team')->get();
         $this->isPopped = false;
@@ -38,7 +39,7 @@ class DiseasesComponent extends Component
         return view('livewire.diseases-component');
     }
 
-    public function dehydrated()
+    public function hydrated()
     {
         $this->mount($this->model);
     }
@@ -59,8 +60,7 @@ class DiseasesComponent extends Component
                 'team_id' => auth()->user()->current_team_id
             ]);    
 
-            $this->toggleModal();
-            $this->initializeFields();
+            $this->isPopped;
         } catch (Exception $e) {
             dd($e);
         }
