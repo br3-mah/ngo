@@ -51,5 +51,8 @@
     </div>
     @if($isPopped)
         @include('modals.create._add_disease')
+    @endif  
+    @if($isUpdate)
+        @include('modals.update._edit_disease')
     @endif
 </div>

@@ -7,7 +7,7 @@
         <span class="file-icon">
             <i class="fas fa-photo-video"></i>
         </span>
-        <p class="has-white modal-card-title">Add A Disease</p>
+        <p class="has-white modal-card-title">Update Disease</p>
         <button wire:click.defer="toggleModal" class="delete" aria-label="close"></button>
       </header>
 
@@ -37,8 +37,8 @@
       </section>
 
       <footer class="modal-card-foot">
-        <button wire:click="store" class="button is-large is-right is-success is-text-sm">Save</button>
-        <button wire:click.defer="toggleModal" class="button is-right is-large">Cancel</button>
+        <button wire:click="update" class="button is-large is-right is-success is-text-sm">Update</button>
+        <button wire:click.defer="toggleUpdateModal" class="button is-right is-large">Cancel</button>
       </footer>
     </div>
 </div>

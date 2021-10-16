@@ -12,7 +12,9 @@ class DiseasesComponent extends Component
 
     public $model;
     public $isPopped;
+    public $isUpdate;
     public $results;
+    public $record_update;
     public $disease_name, $description;
 
     protected $rules = [
@@ -26,6 +28,7 @@ class DiseasesComponent extends Component
         $this->model = $disease;
         $this->results = $disease->with('team')->get();
         $this->isPopped = false;
+        $this->isUpdate = false;
     }
 
     public function initializeFields()
@@ -49,10 +52,15 @@ class DiseasesComponent extends Component
         $this->isPopped = !$this->isPopped;
     }
 
+    public function toggleUpdateModal()
+    {
+        $this->isUpdate = !$this->isUpdate;
+    }
+
     public function store()
     {
         try {
-            $data = Disease::UpdateOrCreate([
+            $data = Disease::firstOrCreate([
                 'name' => $this->disease_name,
                 'description' => $this->description,
                 'slug' => $this->disease_name,
@@ -60,18 +68,33 @@ class DiseasesComponent extends Component
                 'team_id' => auth()->user()->current_team_id
             ]);    
 
-            $this->isPopped;
+            $this->isPopped == false;
         } catch (Exception $e) {
             dd($e);
         }
     }
 
+    public function update(){
+        try {
+            Disease::where('id', $this->record_update)
+            ->update([
+                'name' => $this->disease_name,
+                'description' =>  $this->description
+            ]);
+
+            $this->toggleUpdateModal();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
     public function edit($id, Disease $disease)
     {
+        $this->record_update = $id;
         $data = $disease->find($id);
         $this->disease_name = $data->name;
         $this->description = $data->description;
-        $this->toggleModal();
+        $this->toggleUpdateModal();
     }
 
     public function destroy($id, Disease $disease)
